@@ -43,7 +43,13 @@ export default function Contact() {
       }}
     >
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-        <div style={{ marginBottom: '48px' }}>
+        <div style={{
+          marginBottom: '48px',
+          fontSize: '11px',
+          letterSpacing: '0.3em',
+          color: '#555555',
+          textTransform: 'uppercase' as const,
+        }}>
           <BlurText
             text="Contact"
             delay={60}

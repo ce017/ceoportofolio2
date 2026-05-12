@@ -39,7 +39,7 @@ export default function Hero() {
   })
 
   const handleViewWork = () => {
-    document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })
+    document.getElementById('projects')?.scrollIntoView()
   }
 
   return (
