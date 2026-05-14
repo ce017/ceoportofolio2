@@ -30,35 +30,20 @@ export default function Experiences() {
   return (
     <section
       id="experiences"
-      style={{
-        padding: '120px 32px',
-        background: '#0d0d0d',
-      }}
+      style={{ padding: '120px 32px', background: '#0d0d0d' }}
     >
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         <div style={{
           marginBottom: '48px',
           fontSize: '11px',
           letterSpacing: '0.3em',
-          color: '#555555',
+          color: '#aaaaaa',
           textTransform: 'uppercase' as const,
         }}>
-          <BlurText
-            text="Experiences"
-            delay={60}
-            animateBy="characters"
-            className=""
-          />
+          <BlurText text="Experiences" delay={60} animateBy="characters" className="" />
         </div>
 
-        <div
-          ref={listRef}
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            maxWidth: '640px',
-          }}
-        >
+        <div ref={listRef} style={{ display: 'flex', flexDirection: 'column', maxWidth: '720px' }}>
           {experiences.map((exp, i) => (
             <div
               key={exp.id}
@@ -67,62 +52,89 @@ export default function Experiences() {
                 display: 'grid',
                 gridTemplateColumns: '20px 1fr',
                 gap: '24px',
-                paddingBottom: i < experiences.length - 1 ? '40px' : '0',
+                paddingBottom: i < experiences.length - 1 ? '48px' : '0',
               }}
             >
-              <div
-                style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                  paddingTop: '4px',
-                }}
-              >
-                <div
-                  style={{
-                    width: '6px',
-                    height: '6px',
-                    borderRadius: '50%',
-                    background: '#333',
-                    flexShrink: 0,
-                  }}
-                />
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', paddingTop: '4px' }}>
+                <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#555', flexShrink: 0 }} />
                 {i < experiences.length - 1 && (
-                  <div
-                    style={{
-                      width: '1px',
-                      flex: 1,
-                      background: '#1f1f1f',
-                      marginTop: '6px',
-                    }}
-                  />
+                  <div style={{ width: '1px', flex: 1, background: '#222', marginTop: '6px' }} />
                 )}
               </div>
 
               <div>
-                <h3
-                  style={{
-                    color: '#fff',
-                    fontSize: '15px',
-                    fontWeight: 500,
-                    marginBottom: '4px',
-                  }}
-                >
+                <h3 style={{ color: '#ffffff', fontSize: '15px', fontWeight: 500, marginBottom: '4px' }}>
                   {exp.title}
                 </h3>
-                <div
-                  style={{
-                    color: '#444',
-                    fontSize: '11px',
-                    letterSpacing: '0.1em',
-                    marginBottom: '10px',
-                  }}
-                >
+                <div style={{ color: '#777', fontSize: '11px', letterSpacing: '0.1em', marginBottom: '8px' }}>
                   {exp.dateRange}
                 </div>
-                <p style={{ color: '#666', fontSize: '13px', lineHeight: 1.7 }}>
+                <p style={{ color: '#bbbbbb', fontSize: '13px', lineHeight: 1.75, marginBottom: '16px' }}>
                   {exp.description}
                 </p>
+
+                {exp.roles.map((group) => (
+                  <div key={group.group} style={{ marginBottom: '12px' }}>
+                    <div style={{
+                      color: '#888888',
+                      fontSize: '10px',
+                      letterSpacing: '0.15em',
+                      textTransform: 'uppercase',
+                      marginBottom: '6px',
+                    }}>
+                      {group.group}
+                    </div>
+                    <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                      {group.items.map((item) => (
+                        <li
+                          key={item}
+                          style={{
+                            color: '#aaaaaa',
+                            fontSize: '13px',
+                            lineHeight: 1.65,
+                            paddingLeft: '14px',
+                            position: 'relative',
+                            marginBottom: '3px',
+                          }}
+                        >
+                          <span style={{
+                            position: 'absolute',
+                            left: 0,
+                            top: '9px',
+                            width: '5px',
+                            height: '1px',
+                            background: '#444',
+                          }} />
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+
+                {exp.links && exp.links.length > 0 && (
+                  <div style={{ display: 'flex', gap: '16px', marginTop: '10px' }}>
+                    {exp.links.map((link) => (
+                      <a
+                        key={link.label}
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{
+                          color: '#777',
+                          fontSize: '11px',
+                          letterSpacing: '0.1em',
+                          textDecoration: 'none',
+                          transition: 'color 0.2s',
+                        }}
+                        onMouseEnter={(e) => (e.currentTarget.style.color = '#ccc')}
+                        onMouseLeave={(e) => (e.currentTarget.style.color = '#777')}
+                      >
+                        {link.label} ↗
+                      </a>
+                    ))}
+                  </div>
+                )}
               </div>
             </div>
           ))}

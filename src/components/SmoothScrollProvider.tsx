@@ -1,4 +1,3 @@
-// src/components/SmoothScrollProvider.tsx
 'use client'
 
 import { useEffect } from 'react'
@@ -7,6 +6,12 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import '@/lib/gsap'
 import gsap from 'gsap'
 
+declare global {
+  interface Window {
+    __lenis?: Lenis
+  }
+}
+
 export default function SmoothScrollProvider({
   children,
 }: {
@@ -14,6 +19,7 @@ export default function SmoothScrollProvider({
 }) {
   useEffect(() => {
     const lenis = new Lenis()
+    window.__lenis = lenis
 
     lenis.on('scroll', ScrollTrigger.update)
 
@@ -26,6 +32,7 @@ export default function SmoothScrollProvider({
 
     return () => {
       lenis.destroy()
+      delete window.__lenis
       gsap.ticker.remove(rafCallback)
     }
   }, [])

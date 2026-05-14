@@ -31,7 +31,7 @@ export default function About() {
     <section
       id="about"
       style={{
-        padding: '120px 32px',
+        padding: '200px 32px 120px',
         background: '#0a0a0a',
       }}
     >
@@ -40,7 +40,7 @@ export default function About() {
           marginBottom: '48px',
           fontSize: '11px',
           letterSpacing: '0.3em',
-          color: '#555555',
+          color: '#888888',
           textTransform: 'uppercase' as const,
         }}>
           <BlurText
@@ -54,7 +54,7 @@ export default function About() {
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: '200px 1fr',
+            gridTemplateColumns: '160px 1fr',
             gap: '64px',
             alignItems: 'start',
           }}
@@ -62,9 +62,9 @@ export default function About() {
           <div
             style={{
               position: 'relative',
-              width: '200px',
-              height: '240px',
-              borderRadius: '8px',
+              width: '160px',
+              height: '160px',
+              borderRadius: '50%',
               overflow: 'hidden',
               border: '1px solid #222',
               background: '#111',
@@ -72,22 +72,23 @@ export default function About() {
             }}
           >
             <Image
-              src="/about/photo.jpg"
-              alt="Profile photo"
+              src="https://i.ibb.co/k6SjzLzL/immagine-2026-02-19-173630960.png"
+              alt="Ceo"
               fill
               style={{ objectFit: 'cover' }}
+              unoptimized
             />
           </div>
 
           <div ref={paragraphsRef} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-            <p style={{ color: '#fff', fontSize: '15px', lineHeight: 1.8 }}>
-              Hi — I&apos;m Your Name. I build things on Roblox and spend a lot of time online.
+            <p style={{ color: '#ffffff', fontSize: '15px', lineHeight: 1.8 }}>
+              Hi, I&apos;m Ceo. I&apos;m a Roblox builder, graphic artist, scripter, and community manager who has spent years building large-scale environments and leading military communities on the platform.
             </p>
-            <p style={{ color: '#666', fontSize: '14px', lineHeight: 1.8 }}>
-              I started creating on Roblox and have built various projects since then.
+            <p style={{ color: '#aaaaaa', fontSize: '14px', lineHeight: 1.8 }}>
+              I&apos;ve built leadership, communication, collaboration, and teamwork skills from courses I took at a research center in Northern Italy. Working on group projects helped me learn how to manage tasks, lead, and communicate effectively.
             </p>
-            <p style={{ color: '#666', fontSize: '14px', lineHeight: 1.8 }}>
-              This portfolio is a mix of the digital and the real.
+            <p style={{ color: '#aaaaaa', fontSize: '14px', lineHeight: 1.8 }}>
+              As a builder, I&apos;ve worked on whole maps for RP groups, army groups, hangout games, and real-life games — specialising in realistic buildings using my own assets. As a graphic artist I&apos;ve made gamepass logos, division logos, restaurant menus, propaganda, and all kinds of graphic design work.
             </p>
           </div>
         </div>

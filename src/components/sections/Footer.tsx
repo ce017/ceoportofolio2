@@ -10,10 +10,10 @@ export default function Footer() {
         background: '#0a0a0a',
       }}
     >
-      <span style={{ color: '#333', fontSize: '11px' }}>
-        © {new Date().getFullYear()} Your Name
+      <span style={{ color: '#777', fontSize: '11px' }}>
+        © {new Date().getFullYear()} Ceo&apos;s Portfolio
       </span>
-      <span style={{ color: '#333', fontSize: '11px' }}>
+      <span style={{ color: '#777', fontSize: '11px' }}>
         Built with Next.js
       </span>
     </footer>
