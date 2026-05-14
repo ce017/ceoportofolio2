@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import LoadingScreen from '@/components/LoadingScreen'
+import ParticleBackground from '@/components/ParticleBackground'
 import Navbar from '@/components/Navbar'
 import About from '@/components/sections/About'
 import Projects from '@/components/sections/Projects'
@@ -17,6 +18,7 @@ export default function Home() {
   return (
     <main style={{ background: '#0a0a0a', color: '#ffffff' }}>
       {loading && <LoadingScreen onDone={() => setLoading(false)} />}
+      <ParticleBackground />
       <Navbar />
       <About />
       <Projects />

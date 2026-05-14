@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { useGSAP } from '@gsap/react'
 import { gsap } from '@/lib/gsap'
 import BlurText from '@/components/reactbits/BlurText/BlurText'
+import RobloxProfile from '@/components/RobloxProfile'
 
 export default function About() {
   const paragraphsRef = useRef<HTMLDivElement>(null)
@@ -90,6 +91,9 @@ export default function About() {
             <p style={{ color: '#aaaaaa', fontSize: '14px', lineHeight: 1.8 }}>
               As a builder, I&apos;ve worked on whole maps for RP groups, army groups, hangout games, and real-life games — specialising in realistic buildings using my own assets. As a graphic artist I&apos;ve made gamepass logos, division logos, restaurant menus, propaganda, and all kinds of graphic design work.
             </p>
+            <div style={{ marginTop: '8px', maxWidth: '360px' }}>
+              <RobloxProfile />
+            </div>
           </div>
         </div>
       </div>

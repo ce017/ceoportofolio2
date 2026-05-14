@@ -33,3 +33,16 @@ body {
 ::selection {
   background: #ffffff22;
 }
+
+/* Pixel cursor — global */
+html, body {
+  cursor: url('/cursor.svg') 3 3, auto;
+}
+
+a, button, [role="button"], .ps-enter-btn, [data-cursor="pointer"] {
+  cursor: url('/cursor-pointer.svg') 9 2, pointer;
+}
+
+input, textarea {
+  cursor: text;
+}

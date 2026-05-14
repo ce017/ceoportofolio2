@@ -14,10 +14,23 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://ce-17.vercel.app'),
   title: 'Ceo',
   description: 'Portfolio of Roblox builds and military community leadership by Ceo (17).',
   icons: {
     icon: '/icon.svg',
+  },
+  openGraph: {
+    title: 'Ceo — Portfolio',
+    description: 'Roblox builder, scripter, graphic artist and community manager. 5+ years building large-scale environments and leading military communities.',
+    url: 'https://ce-17.vercel.app',
+    siteName: 'Ceo',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Ceo — Portfolio',
+    description: 'Roblox builder, scripter, graphic artist and community manager.',
   },
 }
 

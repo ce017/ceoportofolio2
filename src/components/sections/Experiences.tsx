@@ -63,12 +63,9 @@ export default function Experiences() {
               </div>
 
               <div>
-                <h3 style={{ color: '#ffffff', fontSize: '15px', fontWeight: 500, marginBottom: '4px' }}>
+                <h3 style={{ color: '#ffffff', fontSize: '15px', fontWeight: 500, marginBottom: '8px' }}>
                   {exp.title}
                 </h3>
-                <div style={{ color: '#777', fontSize: '11px', letterSpacing: '0.1em', marginBottom: '8px' }}>
-                  {exp.dateRange}
-                </div>
                 <p style={{ color: '#bbbbbb', fontSize: '13px', lineHeight: 1.75, marginBottom: '16px' }}>
                   {exp.description}
                 </p>

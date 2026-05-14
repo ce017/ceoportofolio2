@@ -17,7 +17,8 @@ export const experiences: Experience[] = [
       {
         group: 'Department of War',
         items: [
-          'Chairman of the Joint Chiefs of Staff (2nd in command, current)',
+          'Commander In Chief (current)',
+          'Chairman of the Joint Chiefs of Staff (2nd in command)',
           'Vice Chairman of the Joint Chiefs of Staff',
         ],
       },

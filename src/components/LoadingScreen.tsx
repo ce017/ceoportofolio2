@@ -44,10 +44,10 @@ export default function LoadingScreen({ onDone }: { onDone: () => void }) {
     // Start after a tiny breath
     timers.push(
       setTimeout(() => {
-        typeString(AUTH_MSG, setAuthTyped, 16, () => {
+        typeString(AUTH_MSG, setAuthTyped, 18, () => {
           timers.push(
             setTimeout(() => {
-              typeString(PROMPT_PREFIX, setPromptTyped, 24, () => {
+              typeString(PROMPT_PREFIX, setPromptTyped, 26, () => {
                 setPhase('ready')
               })
             }, 280)
@@ -59,30 +59,41 @@ export default function LoadingScreen({ onDone }: { onDone: () => void }) {
     return () => { timers.forEach(clearTimeout) }
   }, [])
 
+  const inputRef = useRef('')
+  inputRef.current = inputTyped
+
+  const submit = () => {
+    setPhase('response')
+    setTimeout(() => {
+      setPhase('closing')
+      gsap.to(overlayRef.current, {
+        yPercent: -100,
+        duration: 0.75,
+        ease: 'power3.inOut',
+        onComplete: onDone,
+      })
+    }, 1500)
+  }
+
+  // Button (or auto): types "enter" for the user then submits
   const runSequence = () => {
     if (phaseRef.current !== 'ready') return
     setPhase('typing')
 
     const word = 'enter'
-    let i = 0
+    let i = inputRef.current.length
+    // Clear any partial input first if it doesn't match the prefix of "enter"
+    if (!word.startsWith(inputRef.current.toLowerCase())) {
+      setInputTyped('')
+      i = 0
+    }
     const tick = () => {
       i++
       if (i <= word.length) {
         setInputTyped(word.slice(0, i))
-        setTimeout(tick, 95 + Math.random() * 40)
+        setTimeout(tick, 105 + Math.random() * 44)
       } else {
-        setTimeout(() => {
-          setPhase('response')
-          setTimeout(() => {
-            setPhase('closing')
-            gsap.to(overlayRef.current, {
-              yPercent: -100,
-              duration: 0.75,
-              ease: 'power3.inOut',
-              onComplete: onDone,
-            })
-          }, 1500)
-        }, 300)
+        setTimeout(submit, 300)
       }
     }
     tick()
@@ -90,7 +101,31 @@ export default function LoadingScreen({ onDone }: { onDone: () => void }) {
 
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
-      if (e.key === 'Enter') runSequence()
+      const phase = phaseRef.current
+      if (phase !== 'ready') return
+
+      if (e.key === 'Enter') {
+        if (inputRef.current.toLowerCase() === 'enter') {
+          e.preventDefault()
+          setPhase('typing')
+          submit()
+        }
+        // If they pressed Enter without typing "enter", ignore — they must type it
+        return
+      }
+
+      if (e.key === 'Backspace') {
+        e.preventDefault()
+        setInputTyped(inputRef.current.slice(0, -1))
+        return
+      }
+
+      // Accept single printable characters, cap length
+      if (e.key.length === 1 && !e.ctrlKey && !e.metaKey && !e.altKey) {
+        if (inputRef.current.length >= 16) return
+        e.preventDefault()
+        setInputTyped(inputRef.current + e.key)
+      }
     }
     window.addEventListener('keydown', handleKey)
     return () => window.removeEventListener('keydown', handleKey)
@@ -238,18 +273,17 @@ export default function LoadingScreen({ onDone }: { onDone: () => void }) {
             borderTop: '2px solid #4cc2ff',
           }}>
             <span style={{
-              color: '#ffffff',
-              fontSize: '11px',
-              fontWeight: 700,
-              letterSpacing: '0.2em',
+              display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+              width: '16px', height: '16px', background: '#012456', color: '#fff',
+              fontSize: '9px', fontWeight: 700, borderRadius: '2px',
             }}>
-              17
+              &gt;_
             </span>
             <span style={{
               fontSize: '12px', color: '#ffffff', flex: 1,
               overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
             }}>
-              Ceo
+              PowerShell
             </span>
             <button className="ps-tab-close" aria-label="close tab">✕</button>
           </div>
@@ -336,7 +370,7 @@ export default function LoadingScreen({ onDone }: { onDone: () => void }) {
           </div>
 
           <div style={{ color: '#555', fontSize: '11px', minHeight: '1.5em' }}>
-            {phase === 'ready' && 'press [ENTER] or click the button'}
+            {phase === 'ready' && "type 'enter' and press Enter, or click the button"}
           </div>
         </div>
       </div>
