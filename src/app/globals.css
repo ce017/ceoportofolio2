@@ -36,11 +36,11 @@ body {
 
 /* Pixel cursor — global */
 html, body {
-  cursor: url('/cursor.svg') 3 3, auto;
+  cursor: url('/cursor.png') 3 3, auto;
 }
 
 a, button, [role="button"], .ps-enter-btn, [data-cursor="pointer"] {
-  cursor: url('/cursor-pointer.svg') 9 2, pointer;
+  cursor: url('/cursor-pointer.png') 3 3, pointer;
 }
 
 input, textarea {
