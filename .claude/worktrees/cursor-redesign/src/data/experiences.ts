@@ -12,7 +12,7 @@ export const experiences: Experience[] = [
     id: 'usaf',
     title: "bbbvvvvvvi's USAF",
     dateRange: '2023 — present',
-    description: 'Served across every major command level — now Commander in Chief of the entire group. Alongside command I run the development side, most recently leading the V4 rebuild of the main base game and the MilNet recruiting game.',
+    description: 'Served across every major command level — currently 2nd in command of the entire group as Chairman of the Joint Chiefs of Staff.',
     roles: [
       {
         group: 'Department of War',

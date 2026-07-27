@@ -91,9 +91,6 @@ export default function About() {
             <p style={{ color: '#aaaaaa', fontSize: '14px', lineHeight: 1.8 }}>
               As a builder, I&apos;ve worked on whole maps for RP groups, army groups, hangout games, and real-life games — specialising in realistic buildings using my own assets. As a graphic artist I&apos;ve made gamepass logos, division logos, restaurant menus, propaganda, and all kinds of graphic design work.
             </p>
-            <p style={{ color: '#aaaaaa', fontSize: '14px', lineHeight: 1.8 }}>
-              More recently I&apos;ve moved further into scripting and web development — full game systems in Roblox Studio, and real websites built with Next.js and TypeScript that I design, build and deploy myself.
-            </p>
             <div style={{ marginTop: '8px', maxWidth: '360px' }}>
               <RobloxProfile />
             </div>
