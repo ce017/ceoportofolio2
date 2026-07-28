@@ -7,6 +7,7 @@ import Navbar from '@/components/Navbar'
 import About from '@/components/sections/About'
 import Projects from '@/components/sections/Projects'
 import Professional from '@/components/sections/Professional'
+import Github from '@/components/sections/Github'
 import Experiences from '@/components/sections/Experiences'
 import Awards from '@/components/sections/Awards'
 import Contact from '@/components/sections/Contact'
@@ -23,6 +24,7 @@ export default function Home() {
       <About />
       <Projects />
       <Professional />
+      <Github />
       <Experiences />
       <Awards />
       <Contact />

@@ -56,6 +56,30 @@ export default function Professional() {
                   <p style={{ color: '#bbbbbb', fontSize: '14px', lineHeight: 1.75 }}>
                     {role.description}
                   </p>
+
+                  {role.links && role.links.length > 0 && (
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', marginTop: '10px' }}>
+                      {role.links.map((link) => (
+                        <a
+                          key={link.label}
+                          href={link.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style={{
+                            color: '#777',
+                            fontSize: '11px',
+                            letterSpacing: '0.1em',
+                            textDecoration: 'none',
+                            transition: 'color 0.2s',
+                          }}
+                          onMouseEnter={(e) => (e.currentTarget.style.color = '#ccc')}
+                          onMouseLeave={(e) => (e.currentTarget.style.color = '#777')}
+                        >
+                          {link.label} ↗
+                        </a>
+                      ))}
+                    </div>
+                  )}
                 </div>
               ))}
             </div>

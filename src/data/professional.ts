@@ -1,6 +1,7 @@
 export interface ProfRole {
   title: string
   description: string
+  links?: { label: string; href: string }[]
 }
 
 export const developerRoles: ProfRole[] = [
@@ -18,11 +19,19 @@ export const developerRoles: ProfRole[] = [
   },
   {
     title: 'Web Developer',
-    description: "Newer skill I picked up and now use a lot. This portfolio is built with Next.js, TypeScript and GSAP, and I've made real business sites too — an Italian freight forwarding company (5 languages, Three.js globe on the hero, news and downloads pages) and a futsal club site styled after a sticker album, plus a site running on Supabase. I do the whole thing myself: design, build, GitHub and the Vercel deploys.",
+    description: "Newer skill I picked up and now use a lot. This portfolio is built with Next.js, TypeScript and GSAP, and I've made real business sites too — an Italian freight forwarding company (5 languages, Three.js globe on the hero, news and downloads pages) and a futsal club site styled after a sticker album, plus a beach club site running on Supabase. I do the whole thing myself: design, build, GitHub and the Vercel deploys.",
+    links: [
+      { label: 'Sistema Spedizioni', href: 'https://sistemaspedizioni.vercel.app' },
+      { label: 'Scafati Futsal Club', href: 'https://scafatifutsal.vercel.app' },
+      { label: 'Papi on the Beach', href: 'https://sito-papi.vercel.app' },
+    ],
   },
   {
     title: 'Discord Bot Developer',
     description: 'Made a Discord bot in Python that simulates X posts, profiles and threads, rendering the cards remotely on Vercel so they come out looking like the real site instead of a plain embed.',
+    links: [
+      { label: 'Try the bot', href: 'https://discord.com/oauth2/authorize?client_id=1518662476701499445' },
+    ],
   },
 ]
 

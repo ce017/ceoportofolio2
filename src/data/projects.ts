@@ -13,12 +13,12 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    id: 'usaf-v4',
-    title: 'USAF V4 — United States Air Force Academy',
-    link: 'https://www.roblox.com/games/97802714567651/V4-United-States-Air-Force-Academy',
+    id: 'hickam-afb',
+    title: 'Hickam Air Force Base',
+    link: 'https://www.roblox.com/games/15701457046/V3-Hickam-Air-Force-Base',
     subsections: [
       {
-        title: 'The Base',
+        title: 'Version 4.0',
         images: [
           'https://i.imgur.com/yrVUnTm.png',
           'https://i.imgur.com/ZaHCpj2.png',
@@ -56,23 +56,6 @@ export const projects: Project[] = [
         ],
       },
       {
-        title: 'MilNet Recruiting Game',
-        images: [
-          'https://i.imgur.com/hJVhXa7.png',
-          'https://i.imgur.com/NGxqVs4.png',
-          'https://i.imgur.com/jl4DFEM.png',
-          'https://i.imgur.com/iJ24O1h.png',
-          'https://i.imgur.com/BhAcYQs.png',
-        ],
-      },
-    ],
-  },
-  {
-    id: 'hickam-afb',
-    title: 'Hickam Air Force Base',
-    link: 'https://www.roblox.com/games/15701457046/V3-Hickam-Air-Force-Base',
-    subsections: [
-      {
         title: 'Version 3.0',
         images: [
           'https://i.imgur.com/iqYSLcc.jpeg',
@@ -101,6 +84,21 @@ export const projects: Project[] = [
           'https://i.imgur.com/SlrqR0O.jpeg',
           'https://i.imgur.com/ZYzoS0t.jpeg',
           'https://i.imgur.com/nJD5vUc.jpeg',
+        ],
+      },
+    ],
+  },
+  {
+    id: 'milnet',
+    title: 'MilNet Recruiting Game',
+    subsections: [
+      {
+        images: [
+          'https://i.imgur.com/hJVhXa7.png',
+          'https://i.imgur.com/NGxqVs4.png',
+          'https://i.imgur.com/jl4DFEM.png',
+          'https://i.imgur.com/iJ24O1h.png',
+          'https://i.imgur.com/BhAcYQs.png',
         ],
       },
     ],
