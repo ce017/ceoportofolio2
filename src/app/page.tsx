@@ -4,6 +4,7 @@ import { useState } from 'react'
 import LoadingScreen from '@/components/LoadingScreen'
 import ParticleBackground from '@/components/ParticleBackground'
 import Navbar from '@/components/Navbar'
+import ActivityWidget from '@/components/ActivityWidget'
 import About from '@/components/sections/About'
 import Projects from '@/components/sections/Projects'
 import Professional from '@/components/sections/Professional'
@@ -21,6 +22,8 @@ export default function Home() {
       {loading && <LoadingScreen onDone={() => setLoading(false)} />}
       <ParticleBackground />
       <Navbar />
+      {/* z-index 40: sits under the loading overlay (300) and the nav (50). */}
+      <ActivityWidget />
       <About />
       <Projects />
       <Professional />
