@@ -37,8 +37,59 @@ function spotifyToActivity(s: LanyardSpotify | null): Activity | null {
   }
 }
 
-function useLanyard(): Activity | null {
+/* Discord activity types we surface. 2 is Spotify (handled separately) and 4 is
+   the custom status, which is text rather than an activity. */
+const ACTIVITY_VERB: Record<number, string> = {
+  0: 'Playing',
+  1: 'Streaming',
+  3: 'Watching',
+  5: 'Competing in',
+}
+
+interface LanyardActivity {
+  type: number
+  name: string
+  details?: string
+  state?: string
+  application_id?: string
+  timestamps?: { start?: number }
+  assets?: { large_image?: string }
+}
+
+/** Turn Discord's asset ref into a real URL; returns undefined if we can't. */
+function assetUrl(a: LanyardActivity): string | undefined {
+  const img = a.assets?.large_image
+  if (!img) return undefined
+  // Proxied external art is stored as "mp:external/<hash>/https/<host>/<path>".
+  if (img.startsWith('mp:')) return `https://media.discordapp.net/${img.slice(3)}`
+  if (!a.application_id) return undefined
+  return `https://cdn.discordapp.com/app-assets/${a.application_id}/${img}.png`
+}
+
+function gamesToActivities(list: LanyardActivity[]): Activity[] {
+  const out: Activity[] = []
+  const seen = new Set<string>()
+  for (const a of list) {
+    const verb = ACTIVITY_VERB[a.type]
+    if (!verb || !a.name) continue
+    if (seen.has(a.name)) continue
+    seen.add(a.name)
+    out.push({
+      key: `game:${a.name}`,
+      kind: 'game',
+      title: `${verb} ${a.name}`,
+      detail: a.details,
+      sub: a.state,
+      since: a.timestamps?.start,
+      imageUrl: assetUrl(a),
+    })
+  }
+  return out
+}
+
+function useLanyard(): { spotify: Activity | null; games: Activity[] } {
   const [spotify, setSpotify] = useState<Activity | null>(null)
+  const [games, setGames] = useState<Activity[]>([])
 
   useEffect(() => {
     if (!DISCORD_USER_ID) return
@@ -69,6 +120,7 @@ function useLanyard(): Activity | null {
         // op 0 = INIT_STATE / PRESENCE_UPDATE
         if (msg.op === 0) {
           setSpotify(spotifyToActivity(msg.d?.spotify ?? null))
+          setGames(gamesToActivities(msg.d?.activities ?? []))
         }
       }
 
@@ -95,7 +147,7 @@ function useLanyard(): Activity | null {
     }
   }, [])
 
-  return spotify
+  return { spotify, games }
 }
 
 /* -------------------------------------------------------------- local agent */
@@ -196,8 +248,18 @@ function useGithub(): Activity | null {
 
 /* -------------------------------------------------------------------- merge */
 
+/**
+ * Discord names the app it detects; the agent reports the same app with richer
+ * data (the open Studio place). Where both describe the SAME app, the agent wins
+ * — but only for that exact name, so playing plain "Roblox" still shows.
+ */
+const AGENT_COVERS: Record<string, string> = {
+  roblox: 'roblox studio',
+  claude: 'claude',
+}
+
 export function usePresence(): Activity[] {
-  const spotify = useLanyard()
+  const { spotify, games } = useLanyard()
   const agent = useAgent()
   const github = useGithub()
 
@@ -210,12 +272,28 @@ export function usePresence(): Activity[] {
     return () => { mounted.current = false; clearInterval(id) }
   }, [])
 
-  const order: Record<string, number> = { spotify: 0, roblox: 1, claude: 2, github: 3 }
-  const all = [...(spotify ? [spotify] : []), ...agent, ...(github ? [github] : [])]
+  // Names already described by an agent card, so Discord's plainer copy is dropped.
+  const covered = new Set(
+    agent.map((a) => AGENT_COVERS[a.kind]).filter(Boolean) as string[]
+  )
+  const dedupedGames = games.filter(
+    (g) => !covered.has(g.title.replace(/^\w+(\s+in)?\s+/, '').toLowerCase())
+  )
 
-  // The agent could in principle also report Spotify; Lanyard's copy wins.
+  const order: Record<string, number> = {
+    spotify: 0, roblox: 1, claude: 2, game: 3, github: 4,
+  }
+  const all = [
+    ...(spotify ? [spotify] : []),
+    ...agent,
+    ...dedupedGames,
+    ...(github ? [github] : []),
+  ]
+
+  // Keys are unique per activity ('game:Minecraft'), so several games can stack
+  // while a duplicate of the same one cannot.
   const seen = new Set<string>()
   return all
-    .filter((a) => (seen.has(a.kind) ? false : (seen.add(a.kind), true)))
+    .filter((a) => (seen.has(a.key) ? false : (seen.add(a.key), true)))
     .sort((a, b) => (order[a.kind] ?? 9) - (order[b.kind] ?? 9))
 }

@@ -46,6 +46,16 @@ function Icon({ kind }: { kind: ActivityKind }) {
       </svg>
     )
   }
+  if (kind === 'game') {
+    return (
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="1.8" aria-hidden>
+        <rect x="2" y="7" width="20" height="11" rx="4" />
+        <path d="M7 11v3M5.5 12.5h3" strokeLinecap="round" />
+        <circle cx="16" cy="12" r="0.9" fill={c} stroke="none" />
+        <circle cx="18.4" cy="14.2" r="0.9" fill={c} stroke="none" />
+      </svg>
+    )
+  }
   if (kind === 'github') {
     return (
       <svg width="15" height="15" viewBox="0 0 24 24" fill={c} aria-hidden>

@@ -31,7 +31,7 @@ export const SUPABASE_ANON_KEY = 'sb_publishable_5YFQeAXAdkXc1Q35cIOsgQ_ofmp9HHe
 export const PRESENCE_ENDPOINT =
   `${SUPABASE_URL}/rest/v1/portfolio_presence?select=payload,updated_at&id=eq.1`
 
-export type ActivityKind = 'spotify' | 'roblox' | 'claude' | 'github' | 'idle'
+export type ActivityKind = 'spotify' | 'roblox' | 'claude' | 'game' | 'github' | 'idle'
 
 export interface Activity {
   key: string
@@ -56,6 +56,7 @@ export const ACCENTS: Record<ActivityKind, string> = {
   spotify: '#1db954',
   roblox: '#00a2ff',
   claude: '#d97757',
+  game: '#5865f2',
   github: '#8b949e',
   idle: '#4a4a4a',
 }

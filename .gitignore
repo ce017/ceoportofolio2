@@ -43,6 +43,8 @@ next-env.d.ts
 # presence agent runtime logs (the write secret lives in an env var, never here)
 /scripts/agent.log
 /scripts/agent.log.err
+__pycache__/
+*.pyc
 
 # local claude worktrees / scratch
 /.claude/worktrees/
