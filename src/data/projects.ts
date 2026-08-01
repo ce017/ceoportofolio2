@@ -8,10 +8,30 @@ export interface Project {
   id: string
   title: string
   link?: string
+  /** Small badge next to the title, e.g. a concurrent-player count. */
+  meta?: string
   subsections: ProjectSubsection[]
 }
 
 export const projects: Project[] = [
+  {
+    id: 'the-company',
+    title: 'The Company',
+    link: 'https://www.roblox.com/games/76842920359834/The-Company',
+    meta: '1K CCU',
+    subsections: [
+      {
+        images: [
+          'https://i.imgur.com/L3F2xfq.png',
+          'https://i.imgur.com/2auwrlG.png',
+          'https://i.imgur.com/dozHikU.png',
+          'https://i.imgur.com/c530eqe.png',
+          'https://i.imgur.com/IXMnKnj.png',
+          'https://i.imgur.com/rXJamkH.png',
+        ],
+      },
+    ],
+  },
   {
     id: 'hickam-afb',
     title: 'Hickam Air Force Base',

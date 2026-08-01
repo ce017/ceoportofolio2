@@ -97,9 +97,28 @@ export default function Projects() {
                   justifyContent: 'space-between', gap: '20px',
                   marginBottom: '36px', borderBottom: '1px solid #222', paddingBottom: '16px',
                 }}>
-                  <h3 style={{ color: '#ffffff', fontSize: '26px', fontWeight: 500, letterSpacing: '0.01em' }}>
-                    {project.title}
-                  </h3>
+                  <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '12px' }}>
+                    <h3 style={{ color: '#ffffff', fontSize: '26px', fontWeight: 500, letterSpacing: '0.01em' }}>
+                      {project.title}
+                    </h3>
+                    {project.meta && (
+                      <span style={{
+                        flexShrink: 0,
+                        fontSize: '10px',
+                        fontWeight: 600,
+                        letterSpacing: '0.15em',
+                        textTransform: 'uppercase',
+                        color: '#cccccc',
+                        border: '1px solid #2e2e2e',
+                        background: '#141414',
+                        padding: '4px 9px',
+                        borderRadius: '3px',
+                        whiteSpace: 'nowrap',
+                      }}>
+                        {project.meta}
+                      </span>
+                    )}
+                  </div>
                   {project.link && (
                     <a
                       href={project.link}
