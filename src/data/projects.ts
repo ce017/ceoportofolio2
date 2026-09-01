@@ -8,7 +8,21 @@ export interface Project {
   id: string
   title: string
   link?: string
+  /** Overrides the default "Visit on Roblox" button label. */
+  linkLabel?: string
+  /** Small chip beside the title, e.g. "Buyable". */
+  tag?: string
+  /** Shown under the header, for projects that are systems rather than places. */
+  description?: string
+  features?: string[]
   subsections: ProjectSubsection[]
+}
+
+/** Where to go to buy anything tagged "Buyable". */
+export const PURCHASE_CONTACT = {
+  handle: '@.ceo',
+  discordUser: 'https://discord.com/users/694228874535633057',
+  discordServer: 'https://discord.gg/mPSSBmm9pV',
 }
 
 export const projects: Project[] = [
@@ -172,6 +186,56 @@ export const projects: Project[] = [
           'https://i.imgur.com/pY4bmr4.png',
           'https://i.imgur.com/SAtjESw.png',
           'https://i.imgur.com/iOara8C.png',
+        ],
+      },
+    ],
+  },
+  {
+    id: 'ceo-bike-system',
+    title: "Ceo's Bike System",
+    tag: 'Buyable',
+    link: 'https://www.roblox.com/games/75334251057311/ceos-bikes',
+    linkLabel: 'Test place',
+    description: 'Modified a pre-made bike system to fit my style.',
+    features: [
+      'Automatic / manual gears',
+      'Realistic wheeling',
+      'First person',
+      'Third person',
+      'First/third person particles on movement',
+      'Pre-made bike models with the system already imported',
+    ],
+    subsections: [
+      {
+        images: [
+          'https://i.imgur.com/GD80Gwp.png',
+          'https://i.imgur.com/5xxl1H0.png',
+          'https://i.imgur.com/bYzz1GW.png',
+          'https://i.imgur.com/MJUMD47.png',
+          'https://i.imgur.com/QpJbpkU.png',
+        ],
+      },
+    ],
+  },
+  {
+    id: 'ceo-locker-system',
+    title: "Ceo's Locker System",
+    tag: 'Buyable',
+    link: 'https://www.roblox.com/games/71486799941145/Ceos-locker-system',
+    linkLabel: 'Test place',
+    description: 'Fully made by me.',
+    features: [
+      'Customizable colors',
+      'Customizable images for each item',
+      'Gears, accessories and clothing are all supported',
+      'Made to be customized easily',
+    ],
+    subsections: [
+      {
+        images: [
+          'https://i.imgur.com/TF4efts.png',
+          'https://i.imgur.com/tOxbno1.png',
+          'https://i.imgur.com/fG5QYtD.png',
         ],
       },
     ],

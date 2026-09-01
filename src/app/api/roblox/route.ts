@@ -37,7 +37,7 @@ export async function GET() {
       {
         id: USER_ID,
         displayName: 'Ceo',
-        username: 'ceo2000_08yt',
+        username: 'ceo2000_8',
         avatarUrl: null,
         profileUrl: `https://www.roblox.com/users/${USER_ID}/profile`,
       },

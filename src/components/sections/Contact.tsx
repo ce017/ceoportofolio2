@@ -22,7 +22,7 @@ const TelegramIcon = () => (
 const contactLinks = [
   {
     label: 'Discord',
-    value: 'lce_17',
+    value: '.ceo',
     href: 'https://discord.com/users/694228874535633057',
     icon: <DiscordIcon />,
     iconBg: '#5865F2',

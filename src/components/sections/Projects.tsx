@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { useGSAP } from '@gsap/react'
 import { gsap } from '@/lib/gsap'
 import BlurText from '@/components/reactbits/BlurText/BlurText'
-import { projects } from '@/data/projects'
+import { projects, PURCHASE_CONTACT } from '@/data/projects'
 
 interface LightboxState {
   projectIdx: number
@@ -31,7 +31,7 @@ export default function Projects() {
     })
 
     // Project header + subsection titles
-    const headers = sectionRef.current?.querySelectorAll<HTMLElement>('.project-header, .subsection-header')
+    const headers = sectionRef.current?.querySelectorAll<HTMLElement>('.project-header, .subsection-header, .project-body')
     headers?.forEach((header) => {
       gsap.from(header, {
         y: 20,
@@ -97,9 +97,28 @@ export default function Projects() {
                   justifyContent: 'space-between', gap: '20px',
                   marginBottom: '36px', borderBottom: '1px solid #222', paddingBottom: '16px',
                 }}>
-                  <h3 style={{ color: '#ffffff', fontSize: '26px', fontWeight: 500, letterSpacing: '0.01em' }}>
-                    {project.title}
-                  </h3>
+                  <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '12px' }}>
+                    <h3 style={{ color: '#ffffff', fontSize: '26px', fontWeight: 500, letterSpacing: '0.01em' }}>
+                      {project.title}
+                    </h3>
+                    {project.tag && (
+                      <span style={{
+                        flexShrink: 0,
+                        fontSize: '10px',
+                        fontWeight: 600,
+                        letterSpacing: '0.15em',
+                        textTransform: 'uppercase',
+                        color: '#7ee2a8',
+                        border: '1px solid #235c3c',
+                        background: 'rgba(35,92,60,0.18)',
+                        padding: '4px 9px',
+                        borderRadius: '3px',
+                        whiteSpace: 'nowrap',
+                      }}>
+                        {project.tag}
+                      </span>
+                    )}
+                  </div>
                   {project.link && (
                     <a
                       href={project.link}
@@ -123,10 +142,73 @@ export default function Projects() {
                       onMouseEnter={(e) => { e.currentTarget.style.background = '#ddd' }}
                       onMouseLeave={(e) => { e.currentTarget.style.background = '#ffffff' }}
                     >
-                      Visit on Roblox ↗
+                      {project.linkLabel ?? 'Visit on Roblox'} ↗
                     </a>
                   )}
                 </div>
+
+                {/* Description + feature list (systems rather than places) */}
+                {(project.description || project.features) && (
+                  <div className="project-body" style={{ marginBottom: project.subsections.length ? '36px' : '0' }}>
+                    {project.description && (
+                      <p style={{ color: '#bbbbbb', fontSize: '14px', lineHeight: 1.75, marginBottom: project.features ? '18px' : '0' }}>
+                        {project.description}
+                      </p>
+                    )}
+
+                    {project.features && (
+                      <ul style={{
+                        listStyle: 'none', padding: 0, margin: 0,
+                        display: 'grid',
+                        gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+                        gap: '8px 24px',
+                      }}>
+                        {project.features.map((f) => (
+                          <li key={f} style={{
+                            color: '#cccccc', fontSize: '13px', lineHeight: 1.6,
+                            paddingLeft: '16px', position: 'relative',
+                          }}>
+                            <span style={{
+                              position: 'absolute', left: 0, top: '9px',
+                              width: '6px', height: '1px', background: '#666',
+                            }} />
+                            {f}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+
+                    {project.tag === 'Buyable' && (
+                      <p style={{
+                        marginTop: '18px', color: '#888888', fontSize: '12px', lineHeight: 1.7,
+                        display: 'flex', alignItems: 'flex-start', gap: '8px', flexWrap: 'wrap',
+                      }}>
+                        <span style={{ color: '#666', flexShrink: 0 }}>ⓘ</span>
+                        <span>
+                          Want it? DM me on Discord —{' '}
+                          <a
+                            href={PURCHASE_CONTACT.discordUser}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            style={{ color: '#cccccc', textDecoration: 'underline', textUnderlineOffset: '2px' }}
+                          >
+                            {PURCHASE_CONTACT.handle}
+                          </a>
+                          {' '}or join{' '}
+                          <a
+                            href={PURCHASE_CONTACT.discordServer}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            style={{ color: '#cccccc', textDecoration: 'underline', textUnderlineOffset: '2px' }}
+                          >
+                            my server
+                          </a>
+                          .
+                        </span>
+                      </p>
+                    )}
+                  </div>
+                )}
 
                 {/* Subsections */}
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '48px' }}>
