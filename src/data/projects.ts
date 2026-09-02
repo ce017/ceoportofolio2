@@ -27,6 +27,56 @@ export const PURCHASE_CONTACT = {
 
 export const projects: Project[] = [
   {
+    id: 'ceo-bike-system',
+    title: "Ceo's Bike System",
+    tag: 'Buyable',
+    link: 'https://www.roblox.com/games/75334251057311/ceos-bikes',
+    linkLabel: 'Test place',
+    description: 'Modified a pre-made bike system to fit my style.',
+    features: [
+      'Automatic / manual gears',
+      'Realistic wheeling',
+      'First person',
+      'Third person',
+      'First/third person particles on movement',
+      'Pre-made bike models with the system already imported',
+    ],
+    subsections: [
+      {
+        images: [
+          'https://i.imgur.com/GD80Gwp.png',
+          'https://i.imgur.com/5xxl1H0.png',
+          'https://i.imgur.com/bYzz1GW.png',
+          'https://i.imgur.com/MJUMD47.png',
+          'https://i.imgur.com/QpJbpkU.png',
+        ],
+      },
+    ],
+  },
+  {
+    id: 'ceo-locker-system',
+    title: "Ceo's Locker System",
+    tag: 'Buyable',
+    link: 'https://www.roblox.com/games/71486799941145/Ceos-locker-system',
+    linkLabel: 'Test place',
+    description: 'Fully made by me.',
+    features: [
+      'Customizable colors',
+      'Customizable images for each item',
+      'Gears, accessories and clothing are all supported',
+      'Made to be customized easily',
+    ],
+    subsections: [
+      {
+        images: [
+          'https://i.imgur.com/TF4efts.png',
+          'https://i.imgur.com/tOxbno1.png',
+          'https://i.imgur.com/fG5QYtD.png',
+        ],
+      },
+    ],
+  },
+  {
     id: 'the-company',
     title: 'The Company',
     link: 'https://www.roblox.com/games/76842920359834/The-Company',
@@ -186,56 +236,6 @@ export const projects: Project[] = [
           'https://i.imgur.com/pY4bmr4.png',
           'https://i.imgur.com/SAtjESw.png',
           'https://i.imgur.com/iOara8C.png',
-        ],
-      },
-    ],
-  },
-  {
-    id: 'ceo-bike-system',
-    title: "Ceo's Bike System",
-    tag: 'Buyable',
-    link: 'https://www.roblox.com/games/75334251057311/ceos-bikes',
-    linkLabel: 'Test place',
-    description: 'Modified a pre-made bike system to fit my style.',
-    features: [
-      'Automatic / manual gears',
-      'Realistic wheeling',
-      'First person',
-      'Third person',
-      'First/third person particles on movement',
-      'Pre-made bike models with the system already imported',
-    ],
-    subsections: [
-      {
-        images: [
-          'https://i.imgur.com/GD80Gwp.png',
-          'https://i.imgur.com/5xxl1H0.png',
-          'https://i.imgur.com/bYzz1GW.png',
-          'https://i.imgur.com/MJUMD47.png',
-          'https://i.imgur.com/QpJbpkU.png',
-        ],
-      },
-    ],
-  },
-  {
-    id: 'ceo-locker-system',
-    title: "Ceo's Locker System",
-    tag: 'Buyable',
-    link: 'https://www.roblox.com/games/71486799941145/Ceos-locker-system',
-    linkLabel: 'Test place',
-    description: 'Fully made by me.',
-    features: [
-      'Customizable colors',
-      'Customizable images for each item',
-      'Gears, accessories and clothing are all supported',
-      'Made to be customized easily',
-    ],
-    subsections: [
-      {
-        images: [
-          'https://i.imgur.com/TF4efts.png',
-          'https://i.imgur.com/tOxbno1.png',
-          'https://i.imgur.com/fG5QYtD.png',
         ],
       },
     ],
