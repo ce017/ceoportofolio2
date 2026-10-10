@@ -77,6 +77,20 @@ export const projects: Project[] = [
     ],
   },
   {
+    id: 'bodyguard',
+    title: 'Bodyguard.',
+    tag: 'In development',
+    description: "My own story game, scripted by me from scratch. You get hired by mail as a private security agent, protect bigger and bigger clients and work your way up to a presidential detail. Not public yet — screenshots coming soon.",
+    features: [
+      'Play Solo, or Duo with a friend — empty slots get an NPC partner',
+      'Five missions so far: a gala, a night-time break-in, a hotel, a press conference and a White House briefing',
+      'Crowds of NPC guests that walk around, sit down and hold real conversations with chat bubbles',
+      'Graded debrief (A–F) after every mission, saved to your profile',
+      'Main menu with cinematic cameras, character customization and graphics settings',
+    ],
+    subsections: [],
+  },
+  {
     id: 'the-company',
     title: 'The Company',
     link: 'https://www.roblox.com/games/76842920359834/The-Company',
