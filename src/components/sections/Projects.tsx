@@ -12,6 +12,39 @@ interface LightboxState {
   imageIdx: number
 }
 
+// Gallery entries can be short clips; each one has a same-named .jpg poster beside it.
+const isVideo = (src: string) => /\.(mp4|webm)$/i.test(src)
+const posterFor = (src: string) => src.replace(/\.(mp4|webm)$/i, '.jpg')
+
+/** A muted looping clip that only plays while it is on screen. */
+function GalleryVideo({ src }: { src: string }) {
+  const ref = useRef<HTMLVideoElement>(null)
+
+  useEffect(() => {
+    const video = ref.current
+    if (!video) return
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) video.play().catch(() => {})
+      else video.pause()
+    }, { threshold: 0.25 })
+    observer.observe(video)
+    return () => observer.disconnect()
+  }, [])
+
+  return (
+    <video
+      ref={ref}
+      src={src}
+      poster={posterFor(src)}
+      muted
+      loop
+      playsInline
+      preload="metadata"
+      style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
+    />
+  )
+}
+
 export default function Projects() {
   const sectionRef = useRef<HTMLElement>(null)
   const [lightbox, setLightbox] = useState<LightboxState | null>(null)
@@ -276,16 +309,20 @@ export default function Projects() {
                                 e.currentTarget.style.borderColor = '#1a1a1a'
                               }}
                             >
-                              <Image
-                                src={img}
-                                alt={`${project.title} ${iIdx + 1}`}
-                                fill
-                                style={{ objectFit: 'cover' }}
-                                sizes="(max-width: 768px) 100vw, 33vw"
-                                unoptimized
-                                priority={pIdx === 0 && sIdx === 0 && iIdx < 6}
-                                loading={pIdx === 0 && sIdx === 0 && iIdx < 6 ? 'eager' : 'lazy'}
-                              />
+                              {isVideo(img) ? (
+                                <GalleryVideo src={img} />
+                              ) : (
+                                <Image
+                                  src={img}
+                                  alt={`${project.title} ${iIdx + 1}`}
+                                  fill
+                                  style={{ objectFit: 'cover' }}
+                                  sizes="(max-width: 768px) 100vw, 33vw"
+                                  unoptimized
+                                  priority={pIdx === 0 && sIdx === 0 && iIdx < 6}
+                                  loading={pIdx === 0 && sIdx === 0 && iIdx < 6 ? 'eager' : 'lazy'}
+                                />
+                              )}
                             </div>
                           )
                         })}
@@ -378,15 +415,29 @@ export default function Projects() {
               </button>
             )}
             <div style={{ position: 'relative', width: '100%', height: '100%', maxWidth: '1100px' }}>
-              <Image
-                key={lightboxImages[lightbox.imageIdx]}
-                src={lightboxImages[lightbox.imageIdx]}
-                alt="enlarged"
-                fill
-                style={{ objectFit: 'contain' }}
-                sizes="1100px"
-                unoptimized
-              />
+              {isVideo(lightboxImages[lightbox.imageIdx]) ? (
+                <video
+                  key={lightboxImages[lightbox.imageIdx]}
+                  src={lightboxImages[lightbox.imageIdx]}
+                  poster={posterFor(lightboxImages[lightbox.imageIdx])}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  controls
+                  style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'contain' }}
+                />
+              ) : (
+                <Image
+                  key={lightboxImages[lightbox.imageIdx]}
+                  src={lightboxImages[lightbox.imageIdx]}
+                  alt="enlarged"
+                  fill
+                  style={{ objectFit: 'contain' }}
+                  sizes="1100px"
+                  unoptimized
+                />
+              )}
             </div>
             {lightbox.imageIdx < lightboxImages.length - 1 && (
               <button

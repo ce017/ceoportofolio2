@@ -93,6 +93,22 @@ export const projects: Project[] = [
     ],
     subsections: [
       {
+        title: 'Cinematics & effects',
+        note: 'Clips recorded while testing in Studio.',
+        images: [
+          '/projects/bodyguard/clips/hit.mp4',
+          '/projects/bodyguard/clips/rally_night.mp4',
+          '/projects/bodyguard/clips/arrival.mp4',
+          '/projects/bodyguard/clips/flyin.mp4',
+          '/projects/bodyguard/clips/whitehouse.mp4',
+          '/projects/bodyguard/clips/briefing.mp4',
+          '/projects/bodyguard/clips/rally_crowd.mp4',
+          '/projects/bodyguard/clips/hospital.mp4',
+          '/projects/bodyguard/clips/debrief.jpg',
+        ],
+      },
+      {
+        title: 'Screenshots',
         images: [
           '/projects/bodyguard/01.jpg',
           '/projects/bodyguard/02.jpg',
@@ -107,6 +123,41 @@ export const projects: Project[] = [
           '/projects/bodyguard/11.jpg',
           '/projects/bodyguard/12.jpg',
         ],
+      },
+    ],
+  },
+  {
+    id: 'sword-combo',
+    title: 'Sword Combo',
+    tag: 'Animation',
+    description: 'A 5-hit full-body sword combo I made for a commission pitch — cartoony but not goofy, and the same combo plays on both R6 and R15 rigs.',
+    features: [
+      'Five hits that chain straight into each other',
+      'One set of key poses, retargeted to R6 and R15',
+      'Swing trail fires on animation markers, so the effect stays in sync with every hit',
+    ],
+    subsections: [
+      {
+        images: ['/projects/sword-combo/01.mp4'],
+      },
+    ],
+  },
+  {
+    id: 'rick-morty-gadgets',
+    title: 'Rick and Morty Gadgets',
+    description: 'Gadgets from Rick and Morty, each one a tool with its own animation and effect, all working on R6.',
+    features: [
+      'Invisibility belt',
+      'Freeze ray',
+      'Pickle Rick syringe — you turn into a pickle and roll around, slowly',
+      'Shrink ray',
+      'Gravity boots that let you walk on walls',
+      'Bully gun',
+    ],
+    subsections: [
+      {
+        note: 'The syringe, recorded while testing.',
+        images: ['/projects/rick-morty-gadgets/01.mp4'],
       },
     ],
   },
