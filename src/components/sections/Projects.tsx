@@ -31,7 +31,7 @@ export default function Projects() {
     })
 
     // Project header + subsection titles
-    const headers = sectionRef.current?.querySelectorAll<HTMLElement>('.project-header, .subsection-header, .project-body')
+    const headers = sectionRef.current?.querySelectorAll<HTMLElement>('.group-header, .project-header, .subsection-header, .project-body')
     headers?.forEach((header) => {
       gsap.from(header, {
         y: 20,
@@ -89,8 +89,27 @@ export default function Projects() {
               project.subsections.slice(0, i).reduce((sum, s) => sum + s.images.length, 0)
             )
 
+            // A heading goes above the first project of each group.
+            const group = project.group ?? 'Roblox'
+            const startsGroup = pIdx === 0 || group !== (projects[pIdx - 1].group ?? 'Roblox')
+
             return (
               <div key={project.id}>
+                {startsGroup && (
+                  <div className="group-header" style={{
+                    display: 'flex', alignItems: 'center', gap: '16px',
+                    marginTop: pIdx === 0 ? 0 : '40px', marginBottom: '48px',
+                  }}>
+                    <span style={{
+                      color: '#ffffff', fontSize: '13px', fontWeight: 600,
+                      letterSpacing: '0.3em', textTransform: 'uppercase', whiteSpace: 'nowrap',
+                    }}>
+                      {group}
+                    </span>
+                    <span style={{ flex: 1, height: '1px', background: '#2a2a2a' }} />
+                  </div>
+                )}
+
                 {/* Project header */}
                 <div className="project-header" style={{
                   display: 'flex', flexWrap: 'wrap', alignItems: 'flex-end',

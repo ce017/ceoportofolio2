@@ -7,6 +7,8 @@ export interface ProjectSubsection {
 export interface Project {
   id: string
   title: string
+  /** Heading the project is listed under; consecutive projects share one. Defaults to "Roblox". */
+  group?: string
   link?: string
   /** Overrides the default "Visit on Roblox" button label. */
   linkLabel?: string
@@ -80,15 +82,29 @@ export const projects: Project[] = [
     id: 'bodyguard',
     title: 'Bodyguard.',
     tag: 'In development',
-    description: "My own story game, scripted by me from scratch. You get hired by mail as a private security agent, protect bigger and bigger clients and work your way up to a presidential detail. Not public yet — screenshots coming soon.",
+    description: "My own story game, scripted by me from scratch. You get hired by mail as a private security agent, protect bigger and bigger clients and work your way up to a presidential detail. Not public yet.",
     features: [
       'Play Solo, or Duo with a friend — empty slots get an NPC partner',
-      'Five missions so far: a gala, a night-time break-in, a hotel, a press conference and a White House briefing',
+      'Five missions so far: a gala, a 2 AM break-in at the client’s house, a campaign rally, a hospital and a White House press briefing',
+      'Every mission is its own place — the detail teleports in from the main menu',
       'Crowds of NPC guests that walk around, sit down and hold real conversations with chat bubbles',
       'Graded debrief (A–F) after every mission, saved to your profile',
       'Main menu with cinematic cameras, character customization and graphics settings',
     ],
-    subsections: [],
+    subsections: [
+      {
+        images: [
+          '/projects/bodyguard/01.jpg',
+          '/projects/bodyguard/02.jpg',
+          '/projects/bodyguard/03.jpg',
+          '/projects/bodyguard/04.jpg',
+          '/projects/bodyguard/05.jpg',
+          '/projects/bodyguard/06.jpg',
+          '/projects/bodyguard/07.jpg',
+          '/projects/bodyguard/08.jpg',
+        ],
+      },
+    ],
   },
   {
     id: 'the-company',
@@ -250,6 +266,224 @@ export const projects: Project[] = [
           'https://i.imgur.com/pY4bmr4.png',
           'https://i.imgur.com/SAtjESw.png',
           'https://i.imgur.com/iOara8C.png',
+        ],
+      },
+    ],
+  },
+
+  // ── Websites ────────────────────────────────────────────────────────────────
+  {
+    id: 'tropify',
+    group: 'Websites',
+    title: 'Tropify Events',
+    link: 'https://tropify.vercel.app',
+    linkLabel: 'Visit site',
+    description: 'Site for Tropify Events, the club nights at Papi on the Beach and PRIME in Pordenone. Built with Next.js, React Three Fiber and Tailwind.',
+    features: [
+      '3D logo hero floating over a cloud field',
+      'Pinned gallery where the photos ride a spinning 3D ring',
+      'Apple-style clear glass buttons that bend whatever is behind them',
+      'Tuned separately for phones',
+    ],
+    subsections: [
+      {
+        images: [
+          '/projects/tropify/01.jpg',
+          '/projects/tropify/02.jpg',
+          '/projects/tropify/03.jpg',
+          '/projects/tropify/04.jpg',
+        ],
+      },
+    ],
+  },
+  {
+    id: 'sistema-spedizioni',
+    group: 'Websites',
+    title: 'Sistema Spedizioni',
+    link: 'https://sistemaspedizioni.vercel.app',
+    linkLabel: 'Visit site',
+    description: 'Full rebuild of the site for an Italian freight forwarding company.',
+    features: [
+      'Five languages',
+      'Three.js globe on the hero',
+      'Services, sectors, news and downloads pages',
+      'Quote request form',
+    ],
+    subsections: [
+      {
+        images: [
+          '/projects/sistema-spedizioni/01.jpg',
+          '/projects/sistema-spedizioni/02.jpg',
+          '/projects/sistema-spedizioni/03.jpg',
+          '/projects/sistema-spedizioni/04.jpg',
+          '/projects/sistema-spedizioni/05.jpg',
+        ],
+      },
+    ],
+  },
+  {
+    id: 'scafati-futsal',
+    group: 'Websites',
+    title: 'Scafati Futsal Club',
+    link: 'https://scafatifutsal.vercel.app',
+    linkLabel: 'Visit site',
+    description: 'Official site of a futsal club, styled after a sticker album — every player gets their own trading card.',
+    features: [
+      'Squad, staff, gallery, club and partners pages',
+      'Player cards that show their goal celebration on hover',
+      'Facebook and Instagram feeds on the home page',
+    ],
+    subsections: [
+      {
+        images: [
+          '/projects/scafati-futsal/01.jpg',
+          '/projects/scafati-futsal/02.jpg',
+          '/projects/scafati-futsal/03.jpg',
+          '/projects/scafati-futsal/04.jpg',
+        ],
+      },
+    ],
+  },
+  {
+    id: 'papi-on-the-beach',
+    group: 'Websites',
+    title: 'Papi on the Beach',
+    link: 'https://sito-papi.vercel.app',
+    linkLabel: 'Visit site',
+    description: 'Site for a beach club and disco near Pordenone, running on Supabase.',
+    features: [
+      'Events, gallery, venue and restaurant pages',
+      'Admin page where the staff add their own events',
+      'Logos for every night they host, from Tropify to Maldita',
+    ],
+    subsections: [
+      {
+        images: [
+          '/projects/papi-on-the-beach/01.jpg',
+          '/projects/papi-on-the-beach/02.jpg',
+          '/projects/papi-on-the-beach/03.jpg',
+          '/projects/papi-on-the-beach/04.jpg',
+        ],
+      },
+    ],
+  },
+
+  // ── Apps & Tools ────────────────────────────────────────────────────────────
+  {
+    id: 'clout',
+    group: 'Apps & Tools',
+    title: 'Clout',
+    tag: 'In testing',
+    description: "An iOS app I'm building with Expo / React Native and Supabase. It's a social sim where you start as a nobody and try to get famous. Not on the App Store yet.",
+    features: [
+      'Feed, stories, comments and DMs',
+      'Events where every choice moves your followers and your relationships',
+      'Characters that post, react and text you back, run by AI',
+      'Career levels from Newcomer to Legend, daily missions and streaks',
+    ],
+    subsections: [
+      {
+        note: 'Stills from the promo video I made for it.',
+        images: [
+          '/projects/clout/01.jpg',
+          '/projects/clout/02.jpg',
+          '/projects/clout/03.jpg',
+          '/projects/clout/04.jpg',
+          '/projects/clout/05.jpg',
+          '/projects/clout/06.jpg',
+        ],
+      },
+    ],
+  },
+  {
+    id: 'ais-break-room',
+    group: 'Apps & Tools',
+    title: 'AIs Break Room',
+    tag: 'Coming soon',
+    link: 'https://aisbreakroom.vercel.app',
+    linkLabel: 'Visit site',
+    description: 'An arcade where AI assistants play games on their break. Your AI connects with a single URL over MCP, picks a machine and plays text-first games — with friends, and you can watch live.',
+    features: [
+      'Hosted MCP server with its own game tools',
+      'Multiplayer, friends by username, live spectating',
+      'Token budgets so a break never eats your usage',
+    ],
+    subsections: [
+      {
+        images: ['/projects/ais-break-room/01.jpg'],
+      },
+    ],
+  },
+  {
+    id: 'studioswitch',
+    group: 'Apps & Tools',
+    title: 'StudioSwitch',
+    tag: 'Open source',
+    link: 'https://github.com/ce017/StudioSwitch',
+    linkLabel: 'View on GitHub',
+    description: 'A small Windows app that lets you choose which open Roblox Studio windows your AI assistant can use. Tick the places it may see, star a default, and switch while you work.',
+    features: [
+      'Hides unticked Studios and refuses calls aimed at them',
+      'Changes apply to running sessions straight away',
+      'Works with Claude, Cursor, VS Code, Windsurf and Gemini CLI',
+    ],
+    subsections: [
+      {
+        images: [
+          '/projects/studioswitch/01.jpg',
+          '/projects/studioswitch/02.jpg',
+          '/projects/studioswitch/03.jpg',
+        ],
+      },
+    ],
+  },
+  {
+    id: 'roblox-anti-cookie-stealer',
+    group: 'Apps & Tools',
+    title: 'Roblox Anti Cookie Stealer',
+    tag: 'Open source',
+    link: 'https://github.com/ce017/roblox-anti-cookie-stealer',
+    linkLabel: 'View on GitHub',
+    description: 'Two PowerShell watchers for Windows. One clears your Roblox session cookie whenever Roblox is closed, the other catches an infostealer staging stolen browser data and names the program responsible.',
+    subsections: [
+      {
+        images: [
+          '/projects/security-tools/01.jpg',
+          '/projects/security-tools/02.jpg',
+        ],
+      },
+    ],
+  },
+  {
+    id: 'discord-anti-token-stealer',
+    group: 'Apps & Tools',
+    title: 'Discord Anti Token Stealer',
+    tag: 'Open source',
+    link: 'https://github.com/ce017/discord-anti-token-stealer',
+    linkLabel: 'View on GitHub',
+    description: 'Detects theft of your Discord session token and tells you within seconds which program read it, instead of finding out when your friends start getting crypto links.',
+    subsections: [
+      {
+        images: [
+          '/projects/security-tools/03.jpg',
+          '/projects/security-tools/04.jpg',
+        ],
+      },
+    ],
+  },
+  {
+    id: 'x-discord-bot',
+    group: 'Apps & Tools',
+    title: 'X Simulator Discord Bot',
+    link: 'https://discord.com/oauth2/authorize?client_id=1518662476701499445',
+    linkLabel: 'Add the bot',
+    description: 'A Discord bot in Python that simulates X posts, profiles and threads. The cards are rendered remotely on Vercel, so they come out looking like the real site instead of a plain embed.',
+    subsections: [
+      {
+        images: [
+          '/projects/x-discord-bot/01.jpg',
+          '/projects/x-discord-bot/02.jpg',
+          '/projects/x-discord-bot/03.jpg',
         ],
       },
     ],
