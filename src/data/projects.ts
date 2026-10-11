@@ -32,6 +32,7 @@ export const projects: Project[] = [
     id: 'the-company',
     title: 'The Company',
     link: 'https://www.roblox.com/games/76842920359834/The-Company',
+    description: 'Built the shops floor, with the furniture shop, the jewelry shop (the GTA V jewelry store as reference) and the fountain in the middle. Helped with other tasks over the life of the game and joined the studio.',
     subsections: [
       {
         images: [
@@ -175,6 +176,7 @@ export const projects: Project[] = [
     id: 'the-mansion',
     title: 'The Mansion',
     link: 'https://www.roblox.com/games/94459276778774/The-Mansion',
+    description: 'Only developer — made it all myself, from the systems to the builds and the overhead GUIs. The vehicles were made by a different studio.',
     subsections: [
       {
         images: [
