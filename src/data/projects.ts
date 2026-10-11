@@ -138,7 +138,7 @@ export const projects: Project[] = [
     ],
     subsections: [
       {
-        images: ['/projects/sword-combo/01.mp4'],
+        images: ['/projects/sword-combo/01.mp4', '/projects/sword-combo/02.mp4'],
       },
     ],
   },
@@ -147,17 +147,28 @@ export const projects: Project[] = [
     title: 'Rick and Morty Gadgets',
     description: 'Gadgets from Rick and Morty, each one a tool with its own animation and effect, all working on R6.',
     features: [
-      'Invisibility belt',
-      'Freeze ray',
+      'Get Schwifty machine — plays the song, with 5 dance animations that rotate',
+      'Freeze ray, with a frost and defrost animation',
       'Pickle Rick syringe — you turn into a pickle and roll around, slowly',
+      'Butter Robot',
+      'Bully gun',
+      'Invisibility belt',
       'Shrink ray',
       'Gravity boots that let you walk on walls',
-      'Bully gun',
     ],
     subsections: [
       {
-        note: 'The syringe, recorded while testing.',
-        images: ['/projects/rick-morty-gadgets/01.mp4'],
+        note: 'One clip per gadget, recorded in Studio. Open a clip to turn the sound on.',
+        images: [
+          '/projects/rick-morty-gadgets/get-schwifty.mp4',
+          '/projects/rick-morty-gadgets/freeze-ray.mp4',
+          '/projects/rick-morty-gadgets/pickle-rick.mp4',
+          '/projects/rick-morty-gadgets/butter-robot.mp4',
+          '/projects/rick-morty-gadgets/bully-gun.mp4',
+          '/projects/rick-morty-gadgets/invisibility-belt.mp4',
+          '/projects/rick-morty-gadgets/shrink-ray.mp4',
+          '/projects/rick-morty-gadgets/gravity-boots.mp4',
+        ],
       },
     ],
   },
@@ -253,6 +264,42 @@ export const projects: Project[] = [
         ],
       },
     ],
+  },
+  {
+    id: 'usaf-academy-v4',
+    title: 'United States Air Force Academy — V4',
+    link: 'https://www.roblox.com/games/97802714567651',
+    description: 'Head developer. We made this version after Roblox took down our main one, which had more than 100k visits over the years. I built the whole map in a highly realistic style, customized the UIs and the whole main system, and managed the community as second in command.',
+    subsections: [
+      {
+        images: ['/projects/usaf-academy-v4/01.jpg'],
+      },
+    ],
+  },
+  {
+    id: 'afa-basic-training',
+    title: 'Air Force Academy: Basic Training',
+    link: 'https://www.roblox.com/games/73056765804967',
+    description: 'Reworked the whole automatic BMT system, which uses a set of APIs and scripts to request a rank as soon as a player passes the training.',
+    subsections: [
+      {
+        images: ['/projects/afa-basic-training/01.jpg'],
+      },
+    ],
+  },
+  {
+    id: 'arnold-hall',
+    title: 'Arnold Hall',
+    link: 'https://www.roblox.com/games/114029373055808',
+    description: 'Head developer: coordinated the devs building the venue, imported Kronos’ system and adapted it to what the game needed.',
+    subsections: [],
+  },
+  {
+    id: 'joint-base-henderson',
+    title: 'Joint Base Henderson, 2002',
+    link: 'https://www.roblox.com/games/134222720073024',
+    description: 'Got hired by this military roleplay group and helped on the building side of the game: interiors and entire buildings.',
+    subsections: [],
   },
   {
     id: 'milnet',
