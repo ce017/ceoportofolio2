@@ -95,7 +95,21 @@ export default function Navbar() {
           backdrop-filter: blur(12px) !important;
           border-bottom: 1px solid #1f1f1f !important;
         }
-        .nav-btn { position: relative; }
+        .nav-btn { position: relative; white-space: nowrap; }
+        /* Phones: the five links don't fit, so the row scrolls sideways instead of widening the page. */
+        @media (max-width: 720px) {
+          .site-nav { padding: 14px 16px !important; gap: 16px; }
+          .nav-links {
+            gap: 18px !important;
+            overflow-x: auto;
+            scrollbar-width: none;
+            -webkit-mask-image: linear-gradient(90deg, #000 85%, transparent);
+            mask-image: linear-gradient(90deg, #000 85%, transparent);
+            padding-right: 24px;
+          }
+          .nav-links::-webkit-scrollbar { display: none; }
+          .nav-btn { font-size: 10px !important; letter-spacing: 0.15em !important; flex-shrink: 0; }
+        }
         .nav-underline {
           position: absolute;
           left: 0;
@@ -109,6 +123,7 @@ export default function Navbar() {
       `}</style>
       <nav
         ref={navRef}
+        className="site-nav"
         style={{
           position: 'fixed',
           top: 0,
@@ -134,7 +149,7 @@ export default function Navbar() {
         >
           17
         </span>
-        <div style={{ display: 'flex', gap: '32px' }}>
+        <div className="nav-links" style={{ display: 'flex', gap: '32px', minWidth: 0 }}>
           {['about', 'projects', 'experiences', 'awards', 'contact'].map((id) => (
             <button
               key={id}

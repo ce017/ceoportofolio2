@@ -31,11 +31,22 @@ export default function About() {
   return (
     <section
       id="about"
+      className="about-section"
       style={{
         padding: '200px 32px 120px',
         background: '#0a0a0a',
       }}
     >
+      {/* Phones: photo stacks above the text instead of squeezing it into a narrow column. */}
+      <style>{`
+        @media (max-width: 720px) {
+          .about-section { padding: 120px 20px 80px !important; }
+          .about-grid { grid-template-columns: 1fr !important; gap: 28px !important; }
+          .about-avatar { width: 112px !important; height: 112px !important; }
+          .about-lead { font-size: 17px !important; line-height: 1.65 !important; }
+          .about-text p { font-size: 15px !important; line-height: 1.7 !important; }
+        }
+      `}</style>
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         <div style={{
           marginBottom: '48px',
@@ -53,6 +64,7 @@ export default function About() {
         </div>
 
         <div
+          className="about-grid"
           style={{
             display: 'grid',
             gridTemplateColumns: '160px 1fr',
@@ -61,6 +73,7 @@ export default function About() {
           }}
         >
           <div
+            className="about-avatar"
             style={{
               position: 'relative',
               width: '160px',
@@ -81,8 +94,8 @@ export default function About() {
             />
           </div>
 
-          <div ref={paragraphsRef} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-            <p style={{ color: '#ffffff', fontSize: '15px', lineHeight: 1.8 }}>
+          <div ref={paragraphsRef} className="about-text" style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+            <p className="about-lead" style={{ color: '#ffffff', fontSize: '15px', lineHeight: 1.8 }}>
               Hi, I&apos;m Ceo. I&apos;m a Roblox builder, graphic artist, scripter, and community manager who has spent years building large-scale environments and leading military communities on the platform.
             </p>
             <p style={{ color: '#aaaaaa', fontSize: '14px', lineHeight: 1.8 }}>
