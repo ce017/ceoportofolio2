@@ -192,11 +192,13 @@ export const projects: Project[] = [
   {
     id: 'hickam-afb',
     title: 'Hickam Air Force Base',
-    link: 'https://www.roblox.com/games/15701457046/V3-Hickam-Air-Force-Base',
+    link: 'https://www.roblox.com/games/97802714567651',
+    description: 'Head developer. We made V4 after Roblox took down our main game, which had more than 100k visits over the years. I built the whole map in a highly realistic style, customized the UIs and the whole main system, and managed the community as second in command.',
     subsections: [
       {
         title: 'Version 4.0',
         images: [
+          '/projects/hickam/v4-thumbnail.jpg',
           'https://i.imgur.com/yrVUnTm.png',
           'https://i.imgur.com/ZaHCpj2.png',
           'https://i.imgur.com/kfDRzRe.png',
@@ -266,42 +268,6 @@ export const projects: Project[] = [
     ],
   },
   {
-    id: 'usaf-academy-v4',
-    title: 'United States Air Force Academy — V4',
-    link: 'https://www.roblox.com/games/97802714567651',
-    description: 'Head developer. We made this version after Roblox took down our main one, which had more than 100k visits over the years. I built the whole map in a highly realistic style, customized the UIs and the whole main system, and managed the community as second in command.',
-    subsections: [
-      {
-        images: ['/projects/usaf-academy-v4/01.jpg'],
-      },
-    ],
-  },
-  {
-    id: 'afa-basic-training',
-    title: 'Air Force Academy: Basic Training',
-    link: 'https://www.roblox.com/games/73056765804967',
-    description: 'Reworked the whole automatic BMT system, which uses a set of APIs and scripts to request a rank as soon as a player passes the training.',
-    subsections: [
-      {
-        images: ['/projects/afa-basic-training/01.jpg'],
-      },
-    ],
-  },
-  {
-    id: 'arnold-hall',
-    title: 'Arnold Hall',
-    link: 'https://www.roblox.com/games/114029373055808',
-    description: 'Head developer: coordinated the devs building the venue, imported Kronos’ system and adapted it to what the game needed.',
-    subsections: [],
-  },
-  {
-    id: 'joint-base-henderson',
-    title: 'Joint Base Henderson, 2002',
-    link: 'https://www.roblox.com/games/134222720073024',
-    description: 'Got hired by this military roleplay group and helped on the building side of the game: interiors and entire buildings.',
-    subsections: [],
-  },
-  {
     id: 'milnet',
     title: 'MilNet Recruiting Game',
     subsections: [
@@ -320,6 +286,7 @@ export const projects: Project[] = [
     id: 'joint-base-williams',
     title: 'Joint Base Williams',
     link: 'https://www.roblox.com/games/119173603068691/Joint-Base-Williams',
+    description: 'Got hired by this military roleplay group and helped on the building side of the game: interiors and entire buildings.',
     subsections: [
       {
         images: [
@@ -369,6 +336,18 @@ export const projects: Project[] = [
           'https://i.imgur.com/SAtjESw.png',
           'https://i.imgur.com/iOara8C.png',
         ],
+      },
+    ],
+  },
+  // Games with one picture or none go last in the Roblox group.
+  {
+    id: 'afa-basic-training',
+    title: 'Air Force Academy: Basic Training',
+    link: 'https://www.roblox.com/games/73056765804967',
+    description: 'Reworked the whole automatic BMT system, which uses a set of APIs and scripts to request a rank as soon as a player passes the training.',
+    subsections: [
+      {
+        images: ['/projects/afa-basic-training/01.jpg'],
       },
     ],
   },
